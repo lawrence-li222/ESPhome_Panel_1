@@ -1,0 +1,51 @@
+substitutions:
+  office_fan_entity: fan.office_ceiling_fan      # must match ha_fan.yaml
+
+  # ── Colours (tweak here, applied everywhere) ──────────────────────────────
+  color_bg:         "0x0D0D1A"
+  color_header:     "0x1A1A2E"
+  color_accent:     "0x00BFFF"
+  color_track:      "0x2A2A3E"
+  color_knob:       "0xFFFFFF"
+  color_btn_preset: "0x1E3A5F"
+  color_btn_on:     "0x007700"
+  color_btn_off:    "0xCC3300"
+  color_dot_off:    "0x444444"
+  color_muted:      "0x888888"
+  color_subtle:     "0xAAAAAA"
+  color_white:      "0xFFFFFF"
+
+  lvgl:
+    displays: my_display
+    byte_order: little_endian
+
+    top_layer:
+      widgets:
+        # Temperature
+        - label:
+            text: "-° / -°"
+            id: temperatures
+            text_font: clockbar_font
+            align: top_left
+            x: 8
+            y: 8
+            text_color: 0xFFFFFF
+        # Room Name
+        - label:
+            text: "Office"
+            id: room_name
+            text_font: montserrat_26
+            align: top_mid
+            x: 0
+            y: 8
+            text_color: 0xFFFFFF
+        # Clock
+        - label:
+            text: "--:--"
+            id: display_time
+            text_font: clockbar_font
+            align: top_right
+            x: 0
+            y: 8
+            text_align: center
+            text_color: 0xFFFFFF

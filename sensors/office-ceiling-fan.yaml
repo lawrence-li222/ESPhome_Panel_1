@@ -1,0 +1,43 @@
+# ─────────────────────────────────────────────────────────────────────────────
+# sensors/office-ceiling-fan.yaml — Home Assistant ↔ ESPHome state bridge
+#
+# Mirrors the HA fan entity onto local sensors so the LVGL UI
+# stays in sync when the fan is controlled from HA, voice, or automations.
+#
+# Change `fan.office_ceiling_fan` to your actual HA entity_id everywhere.
+# ─────────────────────────────────────────────────────────────────────────────
+
+substitutions:
+  office_ceiling_fan: fan.office_ceiling_fan
+
+sensor:
+  - platform: homeassistant
+    id: office_ceiling_fan_speed
+    entity_id: ${office_ceiling_fan}
+    attrribute: percentage
+    on_value:
+      then:
+        - lvgl.slider.update:
+            id: office_ceiling_fan_slider
+            value: !lambda 'return x;'
+        - lvgl.label.update:
+            id: office_ceiling_fan_speed_label
+            text: !lambda 'return "Fan Speed: " + to_string((int)x) + "%";'
+
+binary_sensor:
+  - platform: homeassistant
+    id: office_ceiling_fan_state
+    entity_id: ${office_ceiling_fan}
+    on_state:
+      then:
+        - if:
+            condition:
+              binary_sensor.is_on: office_ceiling_fan_state
+            then:
+              - lvgl.label.update:
+                  id: office_ceiling_fan_state_label
+                  text: "Fan State: ON"
+            else:
+              - lvgl.label.update:
+                  id: office_ceiling_fan_state_label
+                  text: "Fan State: OFF"

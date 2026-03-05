@@ -53,12 +53,10 @@ lvgl:
   pages:
   - id: office_page
     width: 100%
+    height: 100%
     bg_color: 0x1A120B
     bg_opa: 0%          # transparent — image widget is the bg
-    pad_top: 42
-    pad_bottom: 5
-    pad_left: 5
-    pad_right: 5
+    pad_all: 0
 
     widgets:
       # ── Background image ────────────────────────────────────────────────
@@ -120,7 +118,7 @@ lvgl:
       - slider:
           id: office_ceiling_fan_slider
           align: BOTTOM_MID
-          y: -90
+          y: -130
           width: 50%
           height: 12
           min_value: 0

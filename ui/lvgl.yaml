@@ -14,6 +14,7 @@ substitutions:
   color_muted:      "0x888888"
   color_subtle:     "0xAAAAAA"
   color_white:      "0xFFFFFF"
+  color_shadow:     "0xA6A6A6"
 
 lvgl:
   displays: my_display
@@ -106,6 +107,8 @@ lvgl:
           y: -20
           text_font: montserrat_48
           text_color: ${color_accent}
+          shadow_width: 2
+          shadow_color: ${color_shadow}
 
       - label:
           text: "Speed"
@@ -113,6 +116,8 @@ lvgl:
           y: 40
           text_font: montserrat_16
           text_color: ${color_muted}
+          shadow_width: 2
+          shadow_color: ${color_shadow}
 
       # ── Slider ──────────────────────────────────────────────────────────
       - slider:
@@ -127,7 +132,7 @@ lvgl:
           bg_color: ${color_track}
           radius: 6
           shadow_width: 4
-          shadow_color: ${color_dot_off}
+          shadow_color: ${color_shadow}
           indicator:
             bg_color: ${color_accent}
             radius: 6

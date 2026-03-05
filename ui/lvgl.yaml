@@ -1,5 +1,5 @@
 substitutions:
-  office_fan_entity: fan.office_ceiling_fan      # must match ha_fan.yaml
+  office_ceiling_fan: fan.office_ceiling_fan      # must match ha_fan.yaml
 
   # ── Colours (tweak here, applied everywhere) ──────────────────────────────
   color_bg:         "0x0D0D1A"

@@ -69,8 +69,8 @@ lvgl:
       
       # ── Header ──────────────────────────────────────────────────────────
       - obj:
-          align: TOP_MID
-          y: 0
+          x: 30
+          y: -10
           width: 35%
           height: 80
           bg_color: ${color_header}

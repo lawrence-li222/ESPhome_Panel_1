@@ -70,7 +70,7 @@ lvgl:
       # ── Header ──────────────────────────────────────────────────────────
       - obj:
           x: 30
-          y: -10
+          y: 50
           width: 35%
           height: 80
           bg_color: ${color_header}

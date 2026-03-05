@@ -67,6 +67,16 @@ lvgl:
           x: 0
           y: 0
       
+      # ── Camera stream ────────────────────────────────────────────────────
+      - camera:
+          id: camera_view
+          camera_id: office_camera
+          align: TOP_LEFT
+          x: 20
+          y: 100
+          width: 300
+          height: 220
+      
       # ── Header ──────────────────────────────────────────────────────────
       - obj:
           align: TOP_MID

@@ -126,6 +126,8 @@ lvgl:
           value: 0
           bg_color: ${color_track}
           radius: 6
+          shadow_width: 4
+          shadow_color: ${color_dot_off}
           indicator:
             bg_color: ${color_accent}
             radius: 6

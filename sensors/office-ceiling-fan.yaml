@@ -12,9 +12,9 @@ substitutions:
 
 sensor:
   - platform: homeassistant
-    id: office_ceiling_fan_speed
+    id: ha_office_ceiling_fan_speed
     entity_id: ${office_ceiling_fan}
-    attrribute: percentage
+    attribute: percentage
     on_value:
       then:
         - lvgl.slider.update:
@@ -25,19 +25,38 @@ sensor:
             text: !lambda 'return "Fan Speed: " + to_string((int)x) + "%";'
 
 binary_sensor:
+  # Receives fan on/off state from HA
   - platform: homeassistant
-    id: office_ceiling_fan_state
-    entity_id: ${office_ceiling_fan}
+    id: ha_office_ceiling_fan_state
+    entity_id: ${office_fan_entity}
     on_state:
       then:
         - if:
             condition:
-              binary_sensor.is_on: office_ceiling_fan_state
+              binary_sensor.is_on: ha_office_ceiling_fan_state
             then:
+              - lvgl.widget.update:
+                  id: status_dot
+                  bg_color: 0x00BFFF
               - lvgl.label.update:
-                  id: office_ceiling_fan_state_label
-                  text: "Fan State: ON"
+                  id: status_label
+                  text: "ON"
+              - lvgl.label.update:
+                  id: toggle_label
+                  text: "  TURN OFF"
+              - lvgl.widget.update:
+                  id: btn_toggle
+                  bg_color: 0xCC3300
             else:
+              - lvgl.widget.update:
+                  id: status_dot
+                  bg_color: 0x444444
               - lvgl.label.update:
-                  id: office_ceiling_fan_state_label
-                  text: "Fan State: OFF"
+                  id: status_label
+                  text: "OFF"
+              - lvgl.label.update:
+                  id: toggle_label
+                  text: "  TURN ON"
+              - lvgl.widget.update:
+                  id: btn_toggle
+                  bg_color: 0x007700

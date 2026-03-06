@@ -93,11 +93,6 @@ i2c_device:
   - id: i2cdev4
     address: 0x40
 
-globals:
-  - id: last_touch_time
-    type: uint32
-    initial_value: !lambda 'return millis();'
-
 # Touchscreen
 touchscreen:
   - platform: gt911

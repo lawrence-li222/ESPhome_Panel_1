@@ -93,21 +93,6 @@ i2c_device:
   - id: i2cdev4
     address: 0x40
 
-# Touchscreen
-touchscreen:
-  - platform: gt911
-    id: my_touchscreen
-    i2c_id: bus_a
-    reset_pin: GPIO22
-    interrupt_pin: GPIO21
-    on_touch:
-      then:
-        - globals.set:
-            id: last_touch_time
-            value: !lambda 'return millis();'
-        - lvgl.wake:
-        - light.turn_on: display_backlight
-
 # Display
 display:
   - platform: mipi_dsi
